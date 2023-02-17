@@ -2,6 +2,7 @@ import click
 import os
 import requests
 import json
+from tqdm import tqdm
 
 BASE_URL = "https://api.github.com/"
 
@@ -35,14 +36,17 @@ def download_gitignore_templates(output_path):
         # templates = [template["name"] for template in response.json()]
 
         templates = json_string
-        for template in templates:
+        total_templates = len(templates)
+        for i, template in enumerate(templates):
             url = f"{BASE_URL}gitignore/templates/{template}"
             response = requests.get(url, headers=headers)
+
             response_data = json.loads(response.content)
             source = response_data["source"]
             if response.status_code == 200:
                 with open(os.path.join(output_path, f"{template}.gitignore"), "w") as f:
                     f.write(source)
+            yield i + 1, total_templates
     else:
         click.echo(f"Error retrieving templates: {response.status_code}")
         raise click.Abort()
@@ -73,7 +77,16 @@ def update():
 
     # Download all gitignore templates from GitHub to the .gitno folder
     click.echo("Downloading gitignore templates...")
-    download_gitignore_templates(gitignore_folder)
+    progress = tqdm(
+        download_gitignore_templates(gitignore_folder),
+        total=len(os.listdir(gitignore_folder)),
+        colour="green",
+    )
+
+    for i, total in progress:
+        progress.set_description(f"Downloading gitignore template {i+1}/{total}")
+
+    progress.close()
     click.echo("Done.")
 
 
@@ -103,6 +116,7 @@ def generate(template):
 
 cli.add_command(update)
 cli.add_command(list)
+cli.add_command(generate)
 cli.add_command(help)
 
 
