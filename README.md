@@ -15,7 +15,7 @@ pip install gitno
 ```
 ## Usage
 
-Create a `GITHUB_ACCESS_TOKEN` in your settings then add it to your environment variables
+Create a [GITHUB_ACCESS_TOKEN](https://github.com/settings/personal-access-tokens/new) in your settings then add it to your environment variables
 
 Initialize a local copy of the .gitignore files by running:
 
