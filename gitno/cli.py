@@ -32,8 +32,6 @@ def download_gitignore_templates(output_path):
     if response.status_code == 200:
         response_string = response.content.decode("utf-8")
         json_string = json.loads(response_string)
-        # print(json_string)
-        # templates = [template["name"] for template in response.json()]
 
         templates = json_string
         total_templates = len(templates)
@@ -96,22 +94,34 @@ def list():
 
 
 @cli.command()
-@click.argument("template", type=click.Choice(["1", "2", "3", "4", "5"]))
-def generate(template):
+def generate():
     gitignore_folder = create_gitignore_folder()
     templates = [
         template.replace(".gitignore", "") for template in os.listdir(gitignore_folder)
     ]
 
-    template_name = templates[int(template) - 1]
-    template_path = os.path.join(gitignore_folder, f"{template_name}.gitignore")
+    template_choices = [f"{i+1}. {template}" for i, template in enumerate(templates)]
+
+    if not template_choices:
+        click.echo("No gitignore templates found.")
+        return
+
+    selected_template = click.prompt(
+        "Choose a template to generate a .gitignore file",
+        type=click.Choice(templates),
+        show_choices=True,
+    )
+
+    template_path = os.path.join(gitignore_folder, f"{selected_template}.gitignore")
 
     with open(template_path, "r") as f:
         template_contents = f.read()
 
     with open(".gitignore", "w") as f:
         f.write(template_contents)
-    click.echo("Generated .gitignore files based on the template '{template_name}'")
+    click.echo(
+        f"Generated .gitignore file based on the '{selected_template}' template."
+    )
 
 
 cli.add_command(update)
@@ -120,5 +130,5 @@ cli.add_command(generate)
 cli.add_command(help)
 
 
-if __name__ == "__main__":
-    cli()
+# if __name__ == "__main__":
+#     cli()
