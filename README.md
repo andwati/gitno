@@ -4,6 +4,8 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/andwati>/gitno/blob/main/LICENSE)
 [![Python versions](https://img.shields.io/pypi/pyversions/gitno.svg)](https://pypi.org/project/gitno/)
 
+[![codecov](https://codecov.io/gh/andwati/gitno/branch/main/graph/badge.svg?token=3M4XOKD0RP)](https://codecov.io/gh/andwati/gitno)
+
 Gitno is a command-line tool that generates `.gitignore` files based on the templates available in the [github/gitignore](https://github.com/github/gitignore) repository.
 
 ## Installation
@@ -36,6 +38,10 @@ gitno list
 ```
 ## Contributing
 Contributions are welcome! Please see CONTRIBUTING.md for details.
+
+## Test coverage
+
+![Coverage](https://codecov.io/gh/andwati/gitno/branch/main/graphs/sunburst.svg?token=3M4XOKD0RP)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
