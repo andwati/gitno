@@ -1,23 +1,33 @@
-name: CodeCov
-on: [push, pull_request]
+name: Example workflow for Codecov
+on: [push]
 jobs:
   run:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
     env:
-      OS: ubuntu-latest
-      PYTHON: "3.6"
+      OS: ${{ matrix.os }}
+      PYTHON: "3.7"
     steps:
-      - uses: checkout@v2
-        with:
-          fetch-depth: "2"
-
+      - uses: actions/checkout@master
       - name: Setup Python
         uses: actions/setup-python@master
         with:
-          python-version: 3.6
-      - name: Generate Report
+          python-version: 3.7
+      - name: Generate coverage report
         run: |
           pip install coverage
-          coverage run -m unittest
-      - name: Upload Coverage to Codecov
-        uses: codecov/codecov-action@v2
+          python -m coverage run -m unittest discover
+          python -m coverage xml -o coverage.xml
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          directory: ./
+          env_vars: OS,PYTHON
+          fail_ci_if_error: true
+          files: ./coverage.xml,!./cache
+          flags: unittests
+          name: codecov-umbrella
+          verbose: true
