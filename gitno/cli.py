@@ -1,3 +1,4 @@
+from pathlib import Path
 import click
 import os
 import requests
@@ -13,11 +14,11 @@ def cli():
 
 
 def create_gitignore_folder():
-    home_directory = os.path.expanduser("~")
-    gitignore_folder = os.path.join(home_directory, ".gitno/templates")
+    home_directory = Path.home()
+    gitignore_folder = home_directory / ".gitno/templates"
 
-    if not os.path.exists(gitignore_folder):
-        os.mkdir(gitignore_folder)
+    if not gitignore_folder.exists():
+        gitignore_folder.mkdir(parents=True)
 
     return gitignore_folder
 
