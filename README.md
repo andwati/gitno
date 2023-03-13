@@ -15,6 +15,7 @@ You can install `gitno` using pip:
 ```sh
 pip install gitno
 ```
+
 ## Usage
 
 Create a [GITHUB_ACCESS_TOKEN](https://github.com/settings/personal-access-tokens/new) in your settings then add it to your environment variables
@@ -36,12 +37,15 @@ To see a list of available templates, run the list command:
 ```sh
 gitno list
 ```
+
 ## Contributing
-Contributions are welcome! Please see CONTRIBUTING.md for details.
+
+Contributions are welcome! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for details.
 
 ## Test coverage
 
 ![Coverage](https://codecov.io/gh/andwati/gitno/branch/main/graphs/sunburst.svg?token=3M4XOKD0RP)
 
 ## License
+
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
