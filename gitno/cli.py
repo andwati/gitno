@@ -3,7 +3,6 @@ import click
 import os
 import requests
 import json
-from tqdm import tqdm
 
 BASE_URL = "https://api.github.com/"
 
@@ -76,16 +75,9 @@ def update():
 
     # Download all gitignore templates from GitHub to the .gitno folder
     click.echo("Downloading gitignore templates...")
-    progress = tqdm(
-        download_gitignore_templates(gitignore_folder),
-        total=len(os.listdir(gitignore_folder)),
-        colour="green",
-    )
 
-    for i, total in progress:
-        progress.set_description(f"Downloading gitignore template {i+1}/{total}")
+    download_gitignore_templates(gitignore_folder),
 
-    progress.close()
     click.echo("Done.")
 
 
