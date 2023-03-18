@@ -37,7 +37,18 @@ To see a list of available templates, run the list command:
 ```sh
 gitno list
 ```
+## Dev Docker
+The docker file uses clearlinux
+Create an image
+docker build -t gitno --build-arg GITHUB_ACCESS_TOKEN=yourgithubaccesstoken .
+Create a container to test your feature
+docker run -it --name gitno gitno bash
+....Once you exit...it will be an exited process you can check with
+docker ps -a
+......delete this or reuse
 
+To be added,
+Will sync Outside Files with Containered files To make things simpler
 ## Contributing
 
 Contributions are welcome! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for details.
