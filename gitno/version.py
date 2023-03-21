@@ -1,1 +1,2 @@
-version = "0.1.3"
+""" versino.py """
+VERSION = "0.1.3"
