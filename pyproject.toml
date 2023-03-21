@@ -10,7 +10,7 @@ authors = [
 ]
 description = "A commandline gitignore generator"
 readme = "README.md"
-requires-python = ">=3.6"
+requires-python = ">=3.7"
 keywords = ["git", "gitignore", "cli"]
 license = {file = "LICENSE"}
 classifiers = [
