@@ -7,17 +7,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Python 3.7 and Pipenv
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.7
-      run: |
-        pip install pipenv
-        pipenv install --dev
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.7"
 
-    - name: Run Pylint
-      run: |
-        pipenv run pylint gitno
+      - name: Setup pipenv
+        run: pip install pipenv && pipenv install --dev
+
+      - name: Run Pylint
+        run: pipenv run pylint gitno
