@@ -40,9 +40,6 @@ gitno list
 ## Contributing
 Contributions are welcome! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for details.
 
-## Test coverage
-
-![Coverage](https://codecov.io/gh/andwati/gitno/branch/main/graphs/sunburst.svg?token=3M4XOKD0RP)
 
 ## License
 
