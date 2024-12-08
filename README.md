@@ -1,48 +1,32 @@
-# gitno
+Gitno: Gitignore Template Generator
+Overview
+Gitno is a terminal user interface (TUI) application that helps you generate .gitignore files by combining multiple templates from GitHub's gitignore collection.
+Features
 
-[![PyPI version](https://img.shields.io/pypi/v/gitno.svg)](https://pypi.org/project/gitno/)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/andwati>/gitno/blob/main/LICENSE)
-[![Python versions](https://img.shields.io/pypi/pyversions/gitno.svg)](https://pypi.org/project/gitno/)
+Fetch gitignore templates from GitHub
+Interactive selection of multiple templates
+Combine and deduplicate gitignore rules
+Generate a .gitignore file in the current directory
 
-[![codecov](https://codecov.io/gh/andwati/gitno/branch/main/graph/badge.svg?token=3M4XOKD0RP)](https://codecov.io/gh/andwati/gitno)
+Installation
+bashCopygit clone https://github.com/andwati/gitno.git
+cd gitno
+cargo build --release
+Usage
+bashCopy# Run the application
+cargo run
 
-Gitno is a command-line tool that generates `.gitignore` files based on the templates available in the [github/gitignore](https://github.com/github/gitignore) repository.
+# Navigate:
+# - Use Space to select/deselect templates
+# - Press Enter to generate .gitignore
+# - Press Q to quit
+Requirements
 
-## Installation
+Rust 1.75 or higher
+Internet connection to fetch templates
 
-You can install `gitno` using pip:
-
-```sh
-pip install gitno
-```
-
-## Usage
-
-Create a [GITHUB_ACCESS_TOKEN](https://github.com/settings/personal-access-tokens/new) in your settings then add it to your environment variables
-
-Initialize a local copy of the .gitignore files by running:
-
-```sh
-gitno update
-```
-
-To generate a .gitignore file on the current working directory, run the generate command followed by the template number or name:
-
-```sh
-gitno generate
-```
-
-To see a list of available templates, run the list command:
-
-```sh
-gitno list
-```
-## Contributing
-Contributions are welcome! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for details.
-
-## Test coverage
-
-![Coverage](https://codecov.io/gh/andwati/gitno/branch/main/graphs/sunburst.svg?token=3M4XOKD0RP)
+Contributing
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
