@@ -4,7 +4,6 @@ use gitno::app::App;
 mod app;
 mod github;
 mod gitignore;
-mod ui;
 
 #[tokio::main]
 async fn main() -> Result<()> {
