@@ -2,6 +2,13 @@
 name = "gitno"
 version = "0.1.0"
 edition = "2021"
+description = "A terminal UI for generating .gitignore files"
+readme = "README.md"
+repository = "https://github.com/andwati/gitno"
+license = "MIT"
+keywords = ["cli", "gitignore", "development", "tool"]
+categories = ["command-line-utilities", "development-tools"]
+
 
 [lib]
 path = "src/lib.rs"
@@ -23,3 +30,9 @@ itertools = "0.12.0"
 
 [dev-dependencies]
 mockall = "0.12.1"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
